@@ -2,8 +2,10 @@ from flask import Flask, request, Response
 import urllib.parse
 import httpx
 from bs4 import BeautifulSoup
+import flask_cors
 
 app = Flask(__name__)
+flask_cors.CORS(app)
 
 def construct_wikipedia_url(country_name: str) -> str:
     encoded_country = urllib.parse.quote(country_name.replace(' ', '_'))
