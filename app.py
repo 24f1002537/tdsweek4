@@ -24,7 +24,7 @@ def extract_headings(html_content: str):
     return headings_data
 
 def headings_to_markdown(headings_data):
-    markdown_lines = ['## Contents']
+    markdown_lines = []
     for tag, text in headings_data:
         level = int(tag[1])  # 'h2' -> 2
         markdown_line = f"{'#' * level} {text}"
