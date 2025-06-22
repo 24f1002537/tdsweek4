@@ -20,7 +20,8 @@ def fetch_html(url: str) -> str:
 def extract_headings(html_content: str):
     soup = BeautifulSoup(html_content, 'html.parser')
     headings = soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
-    headings_data = [(heading.name, heading.get_text(strip=True)) for heading in headings]
+    # Use separator=' ' to preserve spaces between inline tags
+    headings_data = [(heading.name, heading.get_text(separator=' ', strip=True)) for heading in headings]
     return headings_data
 
 def headings_to_markdown(headings_data):
